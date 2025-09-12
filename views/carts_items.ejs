@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="../stylesheet/cart.css">
+</head>
+<body>
+
+    <header class="header">
+        <a href="/Home_page" class="nav-link">🏠 Home</a>
+        <h1 class="company-name">Your Shopping Cart</h1>
+    </header>
+
+    <div class="cart-container">
+        <h2>Your Cart</h2>
+
+        <% if (user.cart.length === 0) { %>
+            <p>Your cart is empty. Add some products!</p>
+        <% } else { %>
+            <%let total=0%>
+            <% user.cart.map((item) => { %>
+                <div class="cart-item">
+                    <img src="data:image/jpeg;base64,<%= item.image.toString('base64') %>" alt="Product Image">
+                    <div class="cart-info">
+                        <h3><%= item.name %></h3>
+                        <p class="price">Actual Price : ₹<%=item.price%></p>
+                        <p> Discounted Price : ₹<%=(item.price)-((item.price*item.discount)/100)%></p>
+                        <%total+=(item.price)-((item.price*item.discount)/100)%>
+                    </div>
+                    <button class="remove-btn">❌ <a href="/Home_page/cart/remove<%=item._id%>">Remove</a></button>
+                </div>
+            <% }) %>
+            <h2>Total : <%=total%></h2>
+        <% } %>
+
+        <div class="cart-footer">
+            <button class="shop-now-btn"><a href="/Home_page">🛍️ Shop Now</a></button>
+        </div>
+    </div>
+
+</body>
+</html>

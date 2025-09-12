@@ -1,0 +1,152 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Body */
+body {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    padding: 20px;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.nav-link {
+    text-decoration: none;
+    background: #2c3e50;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.company-name {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+/* Cart Container */
+.cart-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Cart Item */
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Image Styling: Auto-adjust size while maintaining aspect ratio */
+.cart-item img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain; /* Ensures image fits without cropping */
+    border-radius: 8px;
+    background: #f1f1f1; /* Light background for better visibility */
+    padding: 10px;
+}
+
+/* Product Info */
+.cart-info {
+    flex: 1;
+}
+
+.cart-info h3 {
+    color: #2c3e50;
+    margin-bottom: 5px;
+}
+
+.cart-info p {
+    color: #7f8c8d;
+}
+
+.price {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #27ae60;
+}
+
+/* Remove Button */
+.remove-btn {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.remove-btn:hover {
+    background: #c0392b;
+}
+
+/* Shop Now Button */
+.cart-footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.shop-now-btn {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.shop-now-btn:hover {
+    background: #2980b9;
+}
+a{
+    list-style: none;
+    text-decoration: none;
+    color: white;
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .cart-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .remove-btn {
+        margin-top: 10px;
+    }
+}

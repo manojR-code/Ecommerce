@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manoj and Co - Products</title>
+    <link rel="stylesheet" href="../stylesheet/user_interface.css">
+</head>
+<body>
+    <header class="header">
+        <button class="logout-btn"><a href="/logout">Logout</a></button>
+        <h1 class="company-name">Manoj and Co</h1>
+        
+        <!-- Navigation Bar -->
+        <nav class="nav-bar">
+            <a href="/home">🏠 Home</a>
+            <a href="/shop">🛍️ Shop</a>
+            <a href="/Home_page/cart" class="cart-link">🛒 Cart</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <% let count = 1; %>
+        <% products.forEach((pro) => { %>
+        <div class="product-card">
+            <img src="data:image/jpeg;base64,<%=pro.image.toString('base64')%>" alt="Product Image">
+            <h2>Product <%= count++ %></h2>
+            <p><%=pro.name%></p>
+            <p><%= pro.description %></p>
+            <p>Discount :<%=pro.discount%>%</p>
+            <p class="price">Actual Price <%= pro.price %></p>
+            <p>Discounted Price<%=(pro.price)-(pro.price*pro.discount)/100%></p>
+            <button class="add-btn"><a href="/Home_page/add_to_cart<%=pro._id%>">Add to Cart</a></button>
+        </div>
+        <% }); %>  
+    </div>
+</body>
+</html>

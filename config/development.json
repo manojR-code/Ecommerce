@@ -1,0 +1,6 @@
+{
+    "MONGODB_URL": "mongodb://127.0.0.1:27017/ecommerce",
+    "SECRET":"MANOJISGREAT",
+    "ADMIN_PASSWORD":"MANOJISGREATADMIN",
+    "ADMIN_NAME":"MANOJR"
+}

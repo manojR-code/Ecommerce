@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="../stylesheet/admin.css">
+</head>
+<body>
+
+    <div class="container">
+        <!-- Left Sidebar with Company Name and Product List -->
+        <aside class="sidebar">
+            <h2>Manoj&Bags</h2>
+            <ul id="productList">
+                <li><strong>All Products</strong></li>
+                <!-- Products will be added here dynamically -->
+            </ul>
+        </aside>
+
+        <!-- Right Side: Form for Adding Products -->
+        <main class="main-content">
+            <h2>Admin Panel</h2>
+            <form id="productForm" action="/products/add_product" method="POST" enctype="multipart/form-data">
+                <label for="productName">Product Name:</label>
+                <input type="text" id="productName" placeholder="Enter product name" name="productname" required>
+
+                <label for="productPrice">Product Price:</label>
+                <input type="number" id="productPrice" placeholder="Enter product price" name="price" required>
+
+                <label for="productDesc">Product Description:</label>
+                <textarea id="productDesc" placeholder="Enter a short and attractive description" rows="3" name="description" required></textarea>
+
+                <label for="bgColor">Background Color:</label>
+                <input type="color" id="bgColor" name="bgcolor" required>
+
+                <label for="discount">Discount :</label>
+                <input type="text" id="discount" name="discount" placeholder="Enter The Discount" >
+
+                <label for="productImage">Upload Image:</label>
+                <input type="file" id="productImage" accept="image/*" name="image">
+
+                <button type="submit">Add Product</button>
+            </form>
+        </main>
+    </div>
+
+</body>
+</html>
