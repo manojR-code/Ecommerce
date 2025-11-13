@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Shop List</title>
+    <link rel="stylesheet" href="../stylesheet/shop.css">
+</head>
+
+<body>
+    <header class="header">
+        <a href="/Home_page" class="nav-link">🏠 Home</a>
+        <h1 class="company-name">Company Products</h1>
+    </header>
+    <div class="container">
+        <%shops.forEach((pro)=>{%>
+            <div class="shop">
+                <h2>
+                    <%=pro.company_name%>
+                </h2>
+                <div class="product-list">
+                    <%if(pro.company_products.length>=1){%>
+                        <%pro.company_products.forEach((prod)=>{%>
+                            <div class="product">
+                                <h3>
+                                    <%=prod.name%>
+                                </h3>
+                                <img src="data:image/jpeg;base64,<%= prod.image.toString('base64') %>"
+                                    alt="Product Image" class="product-image">
+                                <p>
+                                    <%=prod.description%>
+                                </p>
+                            </div>
+                            <%})%>
+                            <%} else{%>
+                            <%="No Products Available"%>
+                            <%}%>
+                </div>
+            </div>
+            <%});%>
+    </div>
+</body>
+
+</html>

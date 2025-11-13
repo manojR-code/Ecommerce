@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Showcase</title>
+    <link rel="stylesheet" href="../stylesheet/show_case_pro.css">
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>Manoj and Co</h1>
+        <a href="/Home_page" class="home-button">Home</a>
+    </div>
+   
+    <%if(!productDetails){%>
+        <%=productDetails%>
+        <%="No Product Are Availabe At Our Site Right now"%>
+            <%}else{%>
+                <div class="product-container">
+                    <img src="data:image/jpeg;base64,<%= productDetails.image.toString('base64') %>" alt="Product Image"
+                        class="product-image">
+                    <div class="product-details">
+                        <h4 class="product-title">
+                            <%= productDetails.name %>
+                        </h4>
+                        <p class="product-price">Discounted Price: <%= productDetails.price %>
+                        </p>
+                        <a href="/Home_page/show_case/add_to_cart<%=productDetails._id %>" class="add-to-cart">Add to
+                            Cart</a>
+                    </div>
+                </div>
+
+                <div class="info-container">
+                    <div class="company-info">
+                        <h3>About Our Company <%=company.company_name%>
+                        </h3>
+                        <p>We are dedicated to providing the best quality products with top-notch customer service.</p>
+                    </div>
+                </div>
+
+                <div class="image-slider-block">
+                    <!-- Image slider goes here -->
+                    <%company.company_products.forEach((pro)=>{%>
+                        <div class="blocks">
+                        <img src="data:image/jpeg;base64,<%= pro.image.toString('base64') %>" alt="Product Image"
+                            class="product-image">
+                            <h4><%=pro.name%></h4>
+                        </div>
+                        <%})%>
+                </div>
+                <form action="show_case/add_review<%=productDetails._id %>" method="post">
+                    <div class="review-form">
+                        <h3>Please Share Your Opinion On <br>these Product</h3>
+                        <textarea placeholder="Add your review..." name="review"></textarea>
+                        <button type="submit">Submit</button>
+                    </div>
+                </form>
+                <div class="reviews">
+                    <h3>Customer Reviews</h3>
+                    <%if(productDetails.reviews.length==0){%>
+                        <h3>No Review Still</h3>
+                        <%}else{%>
+                            <%productDetails.reviews.forEach((ele)=>{%>
+                                <%let arr=ele.split(':')%>
+                                    <p><strong>
+                                            <%=arr[0]%>
+                                        </strong> - <%=arr[1]%>
+                                    </p>
+                                    <%})%>
+                                        <%}%>
+                </div>
+                <%}%>
+</body>
+
+</html>

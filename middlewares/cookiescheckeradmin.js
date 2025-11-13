@@ -10,6 +10,17 @@ function MiddleWares(req, res, next) {
                 res.redirect('/login/admin_login');
             }
         });
-    }else{res.send("something went wrong please try to login again or if you don't have an account then create one ").status(404)} 
+    } else if (req.cookies.COMADMIN_TOKEN) {
+        jwt.verify(req.cookies.COMADMIN_TOKEN, config.SECRET, function (err, decoded) {
+            if (decoded) {
+                next();
+            }
+            else {
+                res.redirect('/owner/admin_sigin');
+            }
+        });
+    }
+        
+    else { res.send("something went wrong please try to login again or if you don't have an account then create one <a href='/login/admin_login'>Click Me</a> ").status(404) }
 }
 module.exports = MiddleWares;

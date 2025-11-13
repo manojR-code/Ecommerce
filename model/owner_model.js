@@ -1,16 +1,34 @@
 const moongoose = require('mongoose');
-const Owner_scheme = moongoose.Schema({
-    fullname: String,
-    email: String,
-    password: String,
-    contact: {
-        type: Number,
+const Company_admin = moongoose.Schema({
+    company_name: {
+        type: String,
+        required: true
     },
-    products: {
-        type: Array,
-        default: []
+    company_logo: Buffer,
+    company_email: {
+        type: String,
+        required: true
     },
-    products:String,
-    picture: String
+    company_password: {
+        type: String,
+        required: true
+    },
+    company_address: {
+        type: String,
+        required: true
+    },
+    company_phone: {
+        type: String,
+        required: true
+    },
+    company_description: {
+        type: String,
+        required: true
+    },
+    company_products: [{
+        type: moongoose.Schema.Types.ObjectId,
+        ref: 'products'
+    }
+    ],   
 });
-module.exports = moongoose.model('owner', Owner_scheme);
+module.exports = moongoose.model('Company_admin', Company_admin);

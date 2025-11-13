@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,31 +7,38 @@
 </head>
 <body>
     <header class="header">
-        <button class="logout-btn"><a href="/logout">Logout</a></button>
+        <button class="logout-btn"><a href="/logout">🚪 Logout</a></button>
         <h1 class="company-name">Manoj and Co</h1>
         
         <!-- Navigation Bar -->
         <nav class="nav-bar">
-            <a href="/home">🏠 Home</a>
-            <a href="/shop">🛍️ Shop</a>
+            <a href="/Home_page/profile">🏕 Profile</a>
+            <a href="/Home_page/shop">🛍️ Shop</a>
             <a href="/Home_page/cart" class="cart-link">🛒 Cart</a>
         </nav>
-    </header>
 
+        <!-- Hamburger Icon for Mobile -->
+        <button class="hamburger">☰</button>
+        <div class="dropdown-menu">
+            <a href="/Home_page/profile">🏕 Profile</a>
+            <a href="/Home_page/shop">🛍️ Shop</a>
+            <a href="/Home_page/cart">🛒 Cart</a>
+            <a href="/logout">🚪 Logout</a>
+        </div>
+    </header>
     <div class="container">
-        <% let count = 1; %>
         <% products.forEach((pro) => { %>
         <div class="product-card">
             <img src="data:image/jpeg;base64,<%=pro.image.toString('base64')%>" alt="Product Image">
-            <h2>Product <%= count++ %></h2>
-            <p><%=pro.name%></p>
-            <p><%= pro.description %></p>
-            <p>Discount :<%=pro.discount%>%</p>
-            <p class="price">Actual Price <%= pro.price %></p>
-            <p>Discounted Price<%=(pro.price)-(pro.price*pro.discount)/100%></p>
-            <button class="add-btn"><a href="/Home_page/add_to_cart<%=pro._id%>">Add to Cart</a></button>
+           <h2 class="product-name" style="font-size: 14px;"><%=pro.name%></h2>
+           <p> <p class="product-description"><%= pro.description %></p></p>
+            <p class="price"> Actual Price: <del><%= pro.price %></del></p>
+            <p class="discounted-price"> Discounted Price: <strong><%=parseInt((pro.price)-(pro.price*pro.discount)/100)%></strong></p>
+            <button class="add-btn"><a href="/Home_page/show_case<%=pro._id%>">View Details</a></button>
         </div>
         <% }); %>  
     </div>
+
+    <script src="../javascript/drop_down.js"></script>
 </body>
 </html>

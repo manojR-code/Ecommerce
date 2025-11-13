@@ -17,6 +17,6 @@ const arrow= async (req, res) => {
             }
         });
      }
-    else{res.send("something went wrong please try to login again or if you don't have an account then create one ").status(404)}
+    else{res.send("something went wrong please try to login again or if you don't have an account then create one follow on these link <a href='/login'>Click Me</a>  ").status(404)}
 };
 module.exports = arrow;

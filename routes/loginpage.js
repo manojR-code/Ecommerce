@@ -14,7 +14,9 @@ router.get('/admin_login', (req, res) => {
 router.post('/admin_verify', (req, res) => {
     if (req.body.password.toUpperCase() === config.ADMIN_PASSWORD && req.body.username.toUpperCase() === config.ADMIN_NAME) {
         res.cookie("tokenADMIN", AdminToken(req.body.username));
-        res.redirect('/admin');   
+        res.clearCookie("COMADMIN_TOKEN");
+        res.cookie("ISLOGINMAINADMIN", true);
+        res.redirect(`/admin`);
     } else {
         res.send("Please Check Your Password Or Name")
     }

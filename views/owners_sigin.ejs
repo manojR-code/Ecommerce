@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Company Registration</title>
+    <style>
+        /* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    padding: 20px;
+}
+
+/* Signup Container */
+.signup-container {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: bold;
+    text-align: left;
+    margin: 8px 0 5px;
+    color: #555;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+input:focus, textarea:focus {
+    border-color: #6e8efb;
+    outline: none;
+    box-shadow: 0 0 5px rgba(110, 142, 251, 0.5);
+}
+
+/* File Upload */
+input[type="file"] {
+    padding: 5px;
+    border: none;
+    background: #f5f5f5;
+}
+
+/* Submit Button */
+button {
+    background: #6e8efb;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #5a7bd6;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .signup-container {
+        padding: 20px;
+        max-width: 90%;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    input, textarea {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <h2>Register Your Company</h2>
+        <form action="/owner/admin_sigin/sigin_in" method="POST" enctype="multipart/form-data">
+            <label for="company-name">Company Name</label>
+            <input type="text" id="company-name" name="company_name" required>
+
+            <label for="about-company">About Company</label>
+            <textarea id="about-company" name="about_company" rows="4" required></textarea>
+
+            <label for="company-logo">Upload Company Logo</label>
+            <input type="file" id="company-logo" name="company_logo" accept="image/*" required>
+
+            <label for="email">Company Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Company Phone Number</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="address">Company Address</label>
+            <textarea id="address" name="address" rows="3" required></textarea>
+
+            <label for="password">Set Password</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</body>
+<script>
+document.querySelector("form").addEventListener("submit", function (e) {
+    const companyName = document.getElementById("company-name").value.trim();
+    const aboutCompany = document.getElementById("about-company").value.trim();
+    const companyLogo = document.getElementById("company-logo").files[0];
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const address = document.getElementById("address").value.trim();
+    const password = document.getElementById("password").value.trim();
+  
+    if (companyName.length < 3) {
+      alert("Company name must be at least 3 characters long.");
+      e.preventDefault();
+      return;
+    }
+  
+    if (aboutCompany.length < 10) {
+      alert("Please provide a more detailed company description (at least 10 characters).");
+      e.preventDefault();
+      return;
+    }
+  
+    if (!companyLogo || !companyLogo.type.startsWith("image/")) {
+      alert("Please upload a valid image file for the company logo.");
+      e.preventDefault();
+      return;
+    }
+  
+    if (companyLogo.size > 2 * 1024 * 1024) {
+      alert("Logo file size should not exceed 2MB.");
+      e.preventDefault();
+      return;
+    }
+  
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert("Enter a valid email address.");
+      e.preventDefault();
+      return;
+    }
+  
+    const phoneRegex = /^[6-9]\d{9}$/;
+    if (!phoneRegex.test(phone)) {
+      alert("Enter a valid 10-digit Indian phone number.");
+      e.preventDefault();
+      return;
+    }
+  
+    if (address.length < 10) {
+      alert("Company address must be at least 10 characters long.");
+      e.preventDefault();
+      return;
+    }
+  
+    if (password.length < 6) {
+      alert("Password must be at least 6 characters long.");
+      e.preventDefault();
+      return;
+    }
+  });
+  
+</script>
+</html>

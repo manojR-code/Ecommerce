@@ -20,16 +20,24 @@ app.set('view engine', 'ejs');
 app.use('/login', login);
 app.use('/login/admin_login', login);
 app.use('/owner', owenerRouter);
+app.use('/admin/removeproduct', productRouter);
 app.use('/logout', logout);
 app.use('/products', productRouter);
 app.use('/Home_page', userRouter);
-app.use('/owners/signup', owenerRouter);
 app.use('/admin', owenerRouter);
 app.use('/signin', landing_page);
 app.use('/Home_page/cart', userRouter);
 app.use('/Home_page/cart/remove', userRouter);
-app.use('/Home_page/add_to_cart', userRouter);
-
+app.use('/Home_page/show_case', userRouter);
+app.use('/Home_page/show_case/add_to_cart', userRouter);
+app.use('/owner/admin_sigin', owenerRouter);
+app.use('/owner/admin_sigin/admin_login', owenerRouter);
+app.use('/owner/comadmin_login', owenerRouter);
+app.use('logout/logout_all', logout);
+app.use('/Home_page/shop', userRouter);
+app.use('/admin/remove', owenerRouter);
+app.use('/Home_page/profile', userRouter);
+app.use('/Home_page/profile/add', userRouter);
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
-})
+});

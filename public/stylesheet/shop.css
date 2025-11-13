@@ -1,0 +1,133 @@
+/* Reset basic styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Body styling */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    padding: 20px;
+  }
+  
+  /* Container to center content */
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  /* Shop card */
+  .shop {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease;
+  }
+  
+  .shop:hover {
+    transform: translateY(-3px);
+  }
+  .product-image {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+}
+.company-name {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #2c3e50;
+}
+.nav-link {
+    text-decoration: none;
+    background: #2c3e50;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+  /* Shop name */
+  .shop h2 {
+    font-size: 24px;
+    color: #333333;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 5px;
+  }
+  
+  /* Product list grid */
+  .product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  
+  /* Individual product card */
+  .product {
+    background-color: #fafafa;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 15px;
+    width: calc(33% - 10px);
+    box-sizing: border-box;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .product:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Product name */
+  .product h3 {
+    font-size: 18px;
+    color: #222;
+    margin-bottom: 8px;
+  }
+  
+  /* Product description */
+  .product p {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.4;
+  }
+  
+  /* Responsive design for tablets */
+  @media (max-width: 768px) {
+    .product {
+      width: calc(50% - 8px);
+    }
+  }
+  
+  /* Responsive design for mobile phones */
+  @media (max-width: 500px) {
+    .product {
+      width: 100%;
+    }
+  
+    .shop h2 {
+      font-size: 20px;
+    }
+  
+    .product h3 {
+      font-size: 16px;
+    }
+  
+    .product p {
+      font-size: 13px;
+    }
+  }
+  

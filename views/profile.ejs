@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Profile</title>
+  <link rel="stylesheet" href="../stylesheet/profile.css">
+</head>
+
+<body>
+  <div class="header">
+    <h1>Manoj and Co</h1>
+    <a href="/Home_page" class="home-button">Home</a>
+  </div>
+
+  <div class="profile-card">
+
+    <!-- Profile image -->
+    <div class="profile-image">
+      <% if (user.picture) { %>
+        <img src="data:image/jpeg;base64,<%=user.picture.toString('base64')%>" alt="Profile Image" />
+        <% }%>
+    </div>
+    <div class="profileimageupload" style="display: none;">
+    <form action="/Home_page/profile/add/profile_image" method="post" enctype="multipart/form-data">
+      <input type="file" name="profileimage" accept="image/*" id="profileImage" class="image-input" />
+      <br>
+      <input type="submit" class="submit">
+    </form>
+  </div>
+    <!-- Name Block -->
+    <div class="name-block">
+      <label>Name</label>
+      <% if (user.fullname) { %>
+        <span class="name-value" style="text-transform: capitalize;">
+          <%= user.fullname %>
+        </span>
+        <% } else { %>
+          <span class="name-value">Not added</span>
+          <a href="#" class="btn">Add</a>
+          <% } %>
+    </div>
+
+    <div class="info-block">
+      <label>Address</label>
+      <% if (user.Address) { %>
+        <span class="value">
+          <%= user.Address %>
+        </span>
+        <form action="/Home_page/profile/add/address" method="POST" id="address" style="display: none;">
+          <textarea name="address" placeholder="Enter your address" class="textarea-field" required></textarea>
+          <button type="submit" class="btn">Save</button>
+        </form>
+        <% } else { %>
+          <form action="/Home_page/profile/add/address" method="POST">
+            <textarea name="address" placeholder="Enter your address" class="textarea-field" required></textarea>
+            <button type="submit" class="btn">Save</button>
+          </form>
+          <% } %>
+    </div>
+
+    <div class="info-block">
+      <label>Pincode</label>
+      <% if (user.pincode) { %>
+        <span class="value">
+          <%= user.pincode %>
+        </span>
+        <form action="/Home_page/profile/add/pincode" method="POST" id="pincode" style="display:none;">
+          <input type="text" name="pincode" placeholder="Enter your pincode" class="input-field" required />
+          <button type="submit" class="btn">Save</button>
+        </form>
+        <% } else { %>
+          <form action="/Home_page/profile/add/pincode" method="POST">
+            <input type="text" name="pincode" placeholder="Enter your pincode" class="input-field" required />
+            <button type="submit" class="btn">Save</button>
+          </form>
+          <% } %>
+    </div>
+    <div class="info-block">
+      <label>City</label>
+      <% if (user.city) { %>
+        <span class="value">
+          <%= user.city %>
+        </span>
+        <form action="/Home_page/profile/add/city" method="POST" id="city" style="display: none;">
+          <input type="text" name="city" placeholder="Enter your city" class="input-field" required />
+          <button type="submit" class="btn">Save</button>
+        </form>
+        <% } else { %>
+          <form action="/Home_page/profile/add/city" method="POST">
+            <input type="text" name="city" placeholder="Enter your city" class="input-field" required />
+            <button type="submit" class="btn">Save</button>
+          </form>
+          <% } %>
+    </div>
+    <div class="info-block">
+      <label>Phone Number</label>
+      <% if (user.contact) { %>
+        <span class="value">
+          <%= user.contact %>
+        </span>
+        <form action="/Home_page/profile/add/phone" method="POST" id="contact" style="display: none;">
+          <input type="tel" name="contact" placeholder="Enter your phone number" class="input-field" required />
+          <button type="submit" class="btn">Save</button>
+        </form>
+        <% } else { %>
+          <form action="/Home_page/profile/add/phone" method="POST">
+            <input type="tel" name="contact" placeholder="Enter your phone number" class="input-field" required />
+            <button type="submit" class="btn">Save</button>
+          </form>
+          <% } %>
+    </div>
+    <button class="btn" id="edit">Edit</button>
+  </div>
+  <script>
+    // Validation rules for each form
+    document.addEventListener("DOMContentLoaded", () => {
+      const forms = document.querySelectorAll("form");
+  
+      forms.forEach((form) => {
+        form.addEventListener("submit", function (e) {
+          const textarea = form.querySelector("textarea");
+          const input = form.querySelector("input");
+          if (input.files.length==0) {
+            alert("select an image.");
+            e.preventDefault();
+          }
+          if (textarea && textarea.name === "address") {
+            if (textarea.value.trim().length < 10) {
+              alert("Address must be at least 10 characters.");
+              e.preventDefault();
+              return;
+            }
+          }
+  
+          if (input && input.name === "pincode") {
+            const pin = input.value.trim();
+            if (!/^\d{6}$/.test(pin)) {
+              alert("Pincode must be exactly 6 digits.");
+              e.preventDefault();
+              return;
+            }
+          }
+  
+          if (input && input.name === "city") {
+            if (input.value.trim().length < 2) {
+              alert("Please enter a valid city.");
+              e.preventDefault();
+              return;
+            }
+          }
+          if (input && input.name === "contact") {
+            const phone = input.value.trim();
+            if (!/^[6-9]\d{9}$/.test(phone)) {
+              alert("Enter a valid 10-digit Indian phone number.");
+              e.preventDefault();
+              return;
+            }
+          }
+        });
+      });
+    });
+  </script>
+  
+  <script src="../javascript/edit.js"></script>
+</body>
+
+</html>

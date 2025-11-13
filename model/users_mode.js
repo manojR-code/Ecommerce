@@ -6,8 +6,7 @@ const Schema = moongoose.Schema({
     cart: [{
         type: moongoose.Schema.Types.ObjectId,
         ref: 'products'
-    }
-    ],
+    }],
     orders: {
         type: Array,
         default: []
@@ -15,8 +14,8 @@ const Schema = moongoose.Schema({
     contact: {
         type: Number,
     },
-    picture: String,
-    PINCODE: Number,
+    picture: Buffer,
+    pincode: Number,
     Address: String,
     city: String,
 });

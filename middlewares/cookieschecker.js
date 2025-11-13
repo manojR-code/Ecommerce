@@ -12,6 +12,6 @@ function MiddleWare(req, res, next) {
             }
         });
 
-    }else{res.send("something went wrong please try to login again or if you don't have an account then create one ").status(404)} 
+    }else{res.send("something went wrong please try to login again or if you don't have an account then create one by going to login page <a href='/login'>Click Me</a> ").status(404)} 
 }
 module.exports = MiddleWare;
